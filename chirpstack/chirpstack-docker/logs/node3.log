@@ -1,0 +1,49 @@
+2026-05-11 07:55:29,156 [INFO] Starting node3 | zone=zone1 | devAddr=00000003 | mode=NORMAL
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\logging\__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 39: character maps to <undefined>
+Call stack:
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 4523, in _thread_main
+    self.loop_forever(retry_first_connection=True)
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 2297, in loop_forever
+    rc = self._loop(timeout)
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 1686, in _loop
+    rc = self.loop_read()
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 2100, in loop_read
+    rc = self._packet_read()
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 3142, in _packet_read
+    rc = self._packet_handle()
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 3814, in _packet_handle
+    return self._handle_connack()
+  File "C:\Users\mohys\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\paho\mqtt\client.py", line 3934, in _handle_connack
+    on_connect(
+  File "D:\BIN\IoT in Apps Development\Asg_2\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 213, in on_connect
+    log.info(f"[{node_id}] \u2713 Connected to MQTT broker")
+Message: '[node3] \u2713 Connected to MQTT broker'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\logging\__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 111: character maps to <undefined>
+Call stack:
+  File "D:\BIN\IoT in Apps Development\Asg_2\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 301, in <module>
+    run_simulator(
+  File "D:\BIN\IoT in Apps Development\Asg_2\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 266, in run_simulator
+    log.info(
+Message: '[node3] #0000 NORMAL   | T= 14.7°C H= 54.9% LW= 1.9h R= 0.3mm | risk=LOW      | \u2713'
+Arguments: ()
