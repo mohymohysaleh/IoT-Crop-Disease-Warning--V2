@@ -255,8 +255,14 @@ def run_simulator(node_id, zone, dev_eui, dev_addr,
             reading  = generate_reading(step, current_mode)
             risk     = compute_risk(reading)
 
-            # Build signed LoRaWAN frame
-            payload  = json.dumps(reading).encode("utf-8")
+            # Build signed LoRaWAN frame (Binary format: Temp(h), Hum(B), Leaf(B), Rain(H))
+            payload = struct.pack(
+                ">hBBH",
+                int(reading["temperature"] * 100),
+                int(reading["humidity"]),
+                int(reading["leaf_wetness"]),
+                int(reading["rainfall"] * 10)
+            )
             phy      = build_lorawan_phy(dev_addr, nwk_skey, app_skey, step, payload)
             msg      = build_gateway_message(phy, gateway_eui, step)
 
