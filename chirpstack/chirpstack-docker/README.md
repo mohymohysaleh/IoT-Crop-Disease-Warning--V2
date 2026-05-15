@@ -87,7 +87,17 @@ $ docker compose up
 After all the components have been initialized and started, you should be able
 to open http://localhost:8080/ in your browser.
 
-##
+## Assignment stack: restore ChirpStack DB (login broken / empty gateways & devices)
+
+ChirpStack configuration lives in Postgres. From **this folder**:
+
+```powershell
+.\scripts\Reset-ChirpStackPostgres.ps1
+```
+
+(Type `RESET` when prompted.) Redis and ThingsBoard volumes are **not** removed. Afterwards run **`set-password --email …`** as printed (**this repo seeds `admin@local`**), then sign in at **http://localhost:8080** with that email. For an **existing** Postgres volume that still shows empty tenants/apps, try **`.\scripts\Repair-ChirpStackTenantLinks.ps1`** first. **PowerShell only** — do not run the `.ps1` with `python`/`py`. Details: **`docs/VERIFICATION_AND_TESTING.md`** §2.
+
+### ChirpStack REST API
 
 The example includes the [ChirpStack REST API](https://github.com/chirpstack/chirpstack-rest-api).
 You should be able to access the UI by opening http://localhost:8090 in your browser.

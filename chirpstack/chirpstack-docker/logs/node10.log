@@ -1,0 +1,165 @@
+2026-05-15 19:51:01,311 [INFO] Starting node10 | zone=zone2 | devAddr=00000010 | mode=NORMAL | seed=453
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 40: character maps to <undefined>
+Call stack:
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1012, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1041, in _bootstrap_inner
+    self.run()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 992, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 4523, in _thread_main
+    self.loop_forever(retry_first_connection=True)
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 2297, in loop_forever
+    rc = self._loop(timeout)
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 1686, in _loop
+    rc = self.loop_read()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 2100, in loop_read
+    rc = self._packet_read()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3142, in _packet_read
+    rc = self._packet_handle()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3814, in _packet_handle
+    return self._handle_connack()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3934, in _handle_connack
+    on_connect(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 246, in on_connect
+    log.info(f"[{node_id}] \u2713 Connected to MQTT broker")
+Message: '[node10] \u2713 Connected to MQTT broker'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 112: character maps to <undefined>
+Call stack:
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
+    run_simulator(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
+    log.info(
+Message: '[node10] #0000 NORMAL   | T= 15.0°C H= 46.2% LW= 1.6h R= 0.7mm | risk=LOW      | \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 112: character maps to <undefined>
+Call stack:
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
+    run_simulator(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
+    log.info(
+Message: '[node10] #0001 NORMAL   | T= 13.3°C H= 62.3% LW= 0.3h R= 0.8mm | risk=LOW      | \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 112: character maps to <undefined>
+Call stack:
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
+    run_simulator(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
+    log.info(
+Message: '[node10] #0002 NORMAL   | T= 14.6°C H= 59.8% LW= 0.9h R= 0.1mm | risk=LOW      | \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 112: character maps to <undefined>
+Call stack:
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
+    run_simulator(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
+    log.info(
+Message: '[node10] #0003 NORMAL   | T= 13.4°C H= 62.9% LW= 0.5h R= 0.8mm | risk=LOW      | \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 40: character maps to <undefined>
+Call stack:
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1012, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1041, in _bootstrap_inner
+    self.run()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 992, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 4523, in _thread_main
+    self.loop_forever(retry_first_connection=True)
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 2297, in loop_forever
+    rc = self._loop(timeout)
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 1686, in _loop
+    rc = self.loop_read()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 2100, in loop_read
+    rc = self._packet_read()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3142, in _packet_read
+    rc = self._packet_handle()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3814, in _packet_handle
+    return self._handle_connack()
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3934, in _handle_connack
+    on_connect(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 246, in on_connect
+    log.info(f"[{node_id}] \u2713 Connected to MQTT broker")
+Message: '[node10] \u2713 Connected to MQTT broker'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 112: character maps to <undefined>
+Call stack:
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
+    run_simulator(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
+    log.info(
+Message: '[node10] #0004 NORMAL   | T= 13.7°C H= 43.2% LW= 0.8h R= 0.2mm | risk=LOW      | \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 112: character maps to <undefined>
+Call stack:
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
+    run_simulator(
+  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
+    log.info(
+Message: '[node10] #0005 NORMAL   | T= 14.3°C H= 62.8% LW= 0.0h R= 0.8mm | risk=LOW      | \u2713'
+Arguments: ()

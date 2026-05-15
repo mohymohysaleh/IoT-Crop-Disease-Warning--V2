@@ -1,0 +1,7 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements-assignment.txt .
+RUN pip install --no-cache-dir -r requirements-assignment.txt
+COPY chirpstack_tb_bridge.py .
+ENV PYTHONUNBUFFERED=1
+CMD ["python", "-u", "chirpstack_tb_bridge.py"]

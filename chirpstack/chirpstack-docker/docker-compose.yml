@@ -73,13 +73,47 @@ services:
     image: eclipse-mosquitto:2
     restart: unless-stopped
     ports:
-      - "1883:1883"
+      # If a local Mosquitto (Windows service) already uses host 1883, use e.g. "1884:1883" and set MQTT_PORT=1884 for host-run scripts.
+      - "1884:1883"
     volumes:
       - ./configuration/mosquitto/config/:/mosquitto/config/
+
+  # ChirpStack MQTT (application/…/event/up) → ThingsBoard CE over HTTP (no PE “Integrations”).
+  tb-chirpstack-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.tb-bridge
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+      - thingsboard
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      TB_URL: http://thingsboard:9090
+    env_file:
+      - .env
+
+  # Assignment 2 (ThingsBoard): UI http://localhost:9090 (sysadmin/sysadmin → change immediately)
+  # MQTT for devices/integration: localhost:11883 → container port 1883
+  thingsboard:
+    image: thingsboard/tb-postgres:latest
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    ports:
+      - "9090:9090"
+      - "11883:1883"
+    environment:
+      TB_QUEUE_TYPE: in-memory
+      JAVA_OPTS: "-Xms256M -Xmx768M -Dplatform=deb -Dinstall.data_dir=/data"
+    volumes:
+      - thingsboard-data:/data
 
 volumes:
   postgresqldata:
   redisdata:
+  thingsboard-data:
 ## docker-compose up --build
 
 ## docker-compose down

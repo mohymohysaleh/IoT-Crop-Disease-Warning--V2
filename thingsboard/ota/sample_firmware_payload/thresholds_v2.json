@@ -1,0 +1,10 @@
+{
+  "zone2_grape_overrides": {
+    "description": "Example threshold pack embedded in an OTA firmware ZIP for Zone2_Sensor",
+    "mod_slots": 30,
+    "high_slots": 66,
+    "rain_window_slots": 288,
+    "critical_leaf_wetness_min": 8,
+    "critical_rain_sum_mm": 5
+  }
+}

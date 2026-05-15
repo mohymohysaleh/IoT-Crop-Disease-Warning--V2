@@ -1,0 +1,3 @@
+# Local secrets (copy from chirpstack/chirpstack-docker/.env.example)
+chirpstack/chirpstack-docker/.env
+*.env.local

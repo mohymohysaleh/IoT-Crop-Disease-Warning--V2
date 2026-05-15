@@ -1,12 +1,32 @@
 import paho.mqtt.client as mqtt
-import json, time, base64, random, math, argparse, logging, sys, struct
+import json, os, time, base64, random, math, argparse, logging, sys, struct, zlib
+from datetime import datetime, timezone
+from pathlib import Path
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).resolve().parent / ".env")
+except ImportError:
+    pass
+
+
+def _env_int(name: str, default: int) -> int:
+    v = os.environ.get(name)
+    if v is None or not str(v).strip():
+        return default
+    try:
+        return int(str(v).strip(), 10)
+    except ValueError:
+        return default
+
+
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 CONFIG = {
-    "mqtt_host": "localhost",
-    "mqtt_port": 1883,
+    "mqtt_host": os.environ.get("MQTT_HOST", os.environ.get("MOSQUITTO_HOST", "localhost")),
+    "mqtt_port": _env_int("MQTT_PORT", _env_int("MOSQUITTO_PORT", 1884)),
     # Your docker-compose gateway bridge topic template
     "uplink_topic": "eu868/gateway/{gateway_id}/event/up",
 }
@@ -138,25 +158,32 @@ def build_lorawan_phy(dev_addr_hex: str, nwk_skey_hex: str, app_skey_hex: str,
 
 # ─── DATA GENERATION ──────────────────────────────────────────────────────────
 
-def generate_reading(step: int, mode: str) -> dict:
-    hour = (step * 5 / 60) % 24
-    temp = round(22 + 8 * math.sin(math.pi * (hour - 6) / 12) + random.uniform(-1, 1), 2)
+def _rng(global_seed: int, node_id: str) -> random.Random:
+    mix = zlib.crc32(node_id.encode("utf-8")) & 0xFFFFFFFF
+    return random.Random((global_seed ^ mix) & 0xFFFFFFFF)
+
+
+def generate_reading(step: int, mode: str, rng: random.Random, interval_secs: int) -> dict:
+    # Diurnal curve; step advances once per telemetry interval (default 300 s → 12 steps/hour).
+    elapsed_h = (step * interval_secs) / 3600.0
+    hour = elapsed_h % 24
+    temp = round(22 + 8 * math.sin(math.pi * (hour - 6) / 12) + rng.uniform(-1, 1), 2)
 
     if mode == "NORMAL":
         return {"temperature": temp,
-                "humidity":    round(random.uniform(40, 65), 2),
-                "leaf_wetness":round(random.uniform(0, 2), 2),
-                "rainfall":    round(random.uniform(0, 1), 2)}
+                "humidity":    round(rng.uniform(40, 65), 2),
+                "leaf_wetness":round(rng.uniform(0, 2), 2),
+                "rainfall":    round(rng.uniform(0, 1), 2)}
     elif mode == "BUILDUP":
         return {"temperature": temp,
-                "humidity":    round(min(92, 65 + (step % 60) * 0.45 + random.uniform(-1, 1)), 2),
-                "leaf_wetness":round(min(10, (step % 60) * 0.15 + random.uniform(0, 0.5)), 2),
-                "rainfall":    round(random.uniform(0, 2), 2)}
+                "humidity":    round(min(92, 65 + (step % 60) * 0.45 + rng.uniform(-1, 1)), 2),
+                "leaf_wetness":round(min(10, (step % 60) * 0.15 + rng.uniform(0, 0.5)), 2),
+                "rainfall":    round(rng.uniform(0, 2), 2)}
     else:  # RAINFALL
-        return {"temperature": round(temp - random.uniform(1, 3), 2),
-                "humidity":    round(random.uniform(88, 97), 2),
-                "leaf_wetness":round(random.uniform(8, 12), 2),
-                "rainfall":    round(random.uniform(8, 22), 2)}
+        return {"temperature": round(temp - rng.uniform(1, 3), 2),
+                "humidity":    round(rng.uniform(88, 97), 2),
+                "leaf_wetness":round(rng.uniform(8, 12), 2),
+                "rainfall":    round(rng.uniform(8, 22), 2)}
 
 
 def compute_risk(r: dict) -> str:
@@ -170,12 +197,16 @@ def compute_risk(r: dict) -> str:
 
 # ─── MQTT GATEWAY BRIDGE PAYLOAD ──────────────────────────────────────────────
 
-def build_gateway_message(phy_bytes: bytes, gateway_eui: str, fcnt: int) -> dict:
+def build_gateway_message(phy_bytes: bytes, gateway_eui: str, rng: random.Random, fcnt: int) -> dict:
     """
-    Build the JSON message that chirpstack-gateway-bridge expects
-    on topic eu868/gateway/{id}/event/up
-    This is the Semtech UDP packet-forwarder JSON format.
+    Build JSON for ``eu868/gateway/{id}/event/up`` (Protobuf JSON mapping).
+
+    gw.proto ``UplinkRxInfo.crc_status`` defaults to ``NO_CRC`` (0) when omitted;
+    ChirpStack NS discards simulator frames unless CRC is marked OK **and** timestamps
+    / metadata look valid.
     """
+    uplink_id = rng.randrange(0, 2**32)
+    gw_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     return {
         "phyPayload": base64.b64encode(phy_bytes).decode(),
         "txInfo": {
@@ -184,21 +215,23 @@ def build_gateway_message(phy_bytes: bytes, gateway_eui: str, fcnt: int) -> dict
                 "lora": {
                     "bandwidth":       125000,
                     "spreadingFactor": 7,
-                    "codeRate":        "CR_4_5"
+                    "codeRate":        "CR_4_5",
                 }
-            }
+            },
         },
         "rxInfo": {
             "gatewayId": gateway_eui,
-            "uplinkId":  fcnt,
-            "rssi":      random.randint(-90, -60),
-            "snr":       round(random.uniform(5.0, 12.0), 1),
-            "context":   base64.b64encode(struct.pack('>I', fcnt)).decode(),
+            "uplinkId": uplink_id,
+            "gwTime": gw_ts,
+            "rssi":      rng.randint(-90, -60),
+            "snr":       float(round(rng.uniform(5.0, 12.0), 1)),
+            "context":   base64.b64encode(struct.pack('>II', uplink_id, fcnt & 0xFFFFFFFF)).decode(),
+            "crcStatus": "CRC_OK",
             "metadata": {
                 "region_common_name": "EU868",
-                "region_config_id":   "eu868"
-            }
-        }
+                "region_config_id":    "eu868",
+            },
+        },
     }
 
 
@@ -238,9 +271,11 @@ def make_mqtt_client(node_id: str):
 # ─── MAIN LOOP ────────────────────────────────────────────────────────────────
 
 def run_simulator(node_id, zone, dev_eui, dev_addr,
-                  nwk_skey, app_skey, gateway_eui, mode, interval):
+                  nwk_skey, app_skey, gateway_eui, mode, interval,
+                  rng_seed):
 
-    log.info(f"Starting {node_id} | zone={zone} | devAddr={dev_addr} | mode={mode}")
+    rng = _rng(rng_seed, node_id)
+    log.info(f"Starting {node_id} | zone={zone} | devAddr={dev_addr} | mode={mode} | seed={rng_seed}")
     client = make_mqtt_client(node_id)
     topic  = CONFIG["uplink_topic"].format(gateway_id=gateway_eui)
     step   = 0
@@ -252,7 +287,7 @@ def run_simulator(node_id, zone, dev_eui, dev_addr,
             else:
                 current_mode = mode
 
-            reading  = generate_reading(step, current_mode)
+            reading  = generate_reading(step, current_mode, rng, interval)
             risk     = compute_risk(reading)
 
             # Build signed LoRaWAN frame (Binary format: Temp(h), Hum(B), Leaf(B), Rain(H))
@@ -264,7 +299,7 @@ def run_simulator(node_id, zone, dev_eui, dev_addr,
                 int(reading["rainfall"] * 10)
             )
             phy      = build_lorawan_phy(dev_addr, nwk_skey, app_skey, step, payload)
-            msg      = build_gateway_message(phy, gateway_eui, step)
+            msg      = build_gateway_message(phy, gateway_eui, rng, step)
 
             result   = client.publish(topic, json.dumps(msg), qos=1)
             status   = "✓" if result.rc == 0 else "✗"
@@ -301,7 +336,10 @@ if __name__ == "__main__":
     parser.add_argument("--gateway-eui", required=True, help="e.g. aa00000000000001")
     parser.add_argument("--mode",        default="NORMAL",
                         choices=["NORMAL","BUILDUP","RAINFALL"])
-    parser.add_argument("--interval",    type=int, default=30)
+    parser.add_argument("--interval",    type=int, default=300,
+                        help="Seconds between telemetry (assignment: 300 = 5 minutes)")
+    parser.add_argument("--seed", type=int, default=453,
+                        help="Deterministic RNG base (per-node mix applied)")
     args = parser.parse_args()
 
     run_simulator(
@@ -314,4 +352,5 @@ if __name__ == "__main__":
         gateway_eui=args.gateway_eui,
         mode=args.mode,
         interval=args.interval,
+        rng_seed=args.seed,
     )
