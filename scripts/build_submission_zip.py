@@ -14,7 +14,11 @@ INCLUDE = [
     "docs/ASSIGNMENT2_REPORT.md",
     "docs/DEMO_VIDEO_SCRIPT.md",
     "docs/VERIFICATION_AND_TESTING.md",
+    "docs/THINGSBOARD_FULL_SETUP.md",
     "chirpstack/chirpstack-docker/docker-compose.yml",
+    "chirpstack/chirpstack-docker/chirpstack_tb_bridge.py",
+    "chirpstack/chirpstack-docker/Dockerfile.tb-bridge",
+    "chirpstack/chirpstack-docker/.env.example",
     "chirpstack/chirpstack-docker/node_simulator.py",
     "chirpstack/chirpstack-docker/run_all_nodes.py",
     "chirpstack/chirpstack-docker/gateway_activator.py",
@@ -41,6 +45,9 @@ INCLUDE = [
     "thingsboard/artifacts/README_ARTIFACT_EXPORTS.md",
     "thingsboard/artifacts/exports/",
     "scripts/build_submission_zip.py",
+    "scripts/verify_assignment_ready.py",
+    "scripts/export_tb_artifacts.py",
+    "scripts/build_report_pdf.py",
 ]
 
 

@@ -1,0 +1,23 @@
+{
+  "id": {
+    "entityType": "RULE_CHAIN",
+    "id": "5e61e890-50ba-11f1-a202-c1ba6c5deb08"
+  },
+  "createdTime": 1778889680281,
+  "tenantId": {
+    "entityType": "TENANT",
+    "id": "edea4420-5043-11f1-ae44-bd84dc73555c"
+  },
+  "name": "_MetaTest_77c3bffa",
+  "type": "CORE",
+  "firstRuleNodeId": {
+    "entityType": "RULE_NODE",
+    "id": "d7ab86b7-c43d-4ac6-aceb-d05aa8f5ad11"
+  },
+  "root": false,
+  "debugMode": false,
+  "externalId": null,
+  "version": 5,
+  "configuration": null,
+  "additionalInfo": {}
+}

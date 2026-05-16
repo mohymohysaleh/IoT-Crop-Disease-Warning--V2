@@ -96,8 +96,10 @@ services:
 
   # Assignment 2 (ThingsBoard): UI http://localhost:9090 (sysadmin/sysadmin → change immediately)
   # MQTT for devices/integration: localhost:11883 → container port 1883
+  # Pinned TB version: `latest` has repeatedly broken no-op POST /api/ruleChain/metadata (rule_node stays empty).
+  # Match UI footer (e.g. 4.2.1.1) → use the same major.minor line from https://hub.docker.com/r/thingsboard/tb-postgres/tags
   thingsboard:
-    image: thingsboard/tb-postgres:latest
+    image: thingsboard/tb-postgres:4.2.1.1
     restart: unless-stopped
     depends_on:
       - mosquitto

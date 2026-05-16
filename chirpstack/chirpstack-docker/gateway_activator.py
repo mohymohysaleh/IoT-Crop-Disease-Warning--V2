@@ -57,7 +57,7 @@ def send_gateway_conn_online(client, gateway_eui: str):
     log.info(
         "Gateway %s → state/conn ONLINE (%s)",
         gateway_eui,
-        "✓" if result.rc == 0 else "✗",
+        "ok" if result.rc == 0 else "FAIL",
     )
 
 
@@ -81,7 +81,7 @@ def send_gateway_stats(client, gateway_eui: str):
     log.info(
         "Gateway %s → event/stats (%s)",
         gateway_eui,
-        "✓" if result.rc == 0 else "✗",
+        "ok" if result.rc == 0 else "FAIL",
     )
 
 
@@ -91,7 +91,7 @@ def main():
     def on_connect(client, userdata, flags, rc, props=None):
         if rc == 0:
             connected[0] = True
-            log.info("✓ Connected to MQTT broker")
+            log.info("Connected to MQTT broker (ok)")
 
     client = mqtt.Client(
         client_id="gateway-activator",

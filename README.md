@@ -86,6 +86,9 @@ Single checklist: **[`docs/VERIFICATION_AND_TESTING.md`](docs/VERIFICATION_AND_T
 | Printable report (convert to PDF for submission) | [`docs/ASSIGNMENT2_REPORT.md`](docs/ASSIGNMENT2_REPORT.md) |
 | Demo outline | [`docs/DEMO_VIDEO_SCRIPT.md`](docs/DEMO_VIDEO_SCRIPT.md) |
 | Submission ZIP builder | `py -3 scripts/build_submission_zip.py` → `ASSIGNMENT2_SUBMISSION.zip` |
+| Pre-submit checks (files, TB optional, docker optional) | `py -3 scripts/verify_assignment_ready.py` (+ `--tb` `--docker`) |
+| Export TB dashboard + rule chains to `artifacts/exports/` | `py -3 scripts/export_tb_artifacts.py` (ThingsBoard must be running; uses `.env` `TB_*`) |
+| Report -> PDF (needs [pandoc](https://pandoc.org/installing.html)) | `py -3 scripts/build_report_pdf.py` -> `ASSIGNMENT2_REPORT.pdf` |
 | Export TB JSON into | `thingsboard/artifacts/exports/` |
 
 ## Reference PDFs (course brief)

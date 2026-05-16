@@ -1,0 +1,2 @@
+2026-05-16 01:20:23,434 [INFO] [node7] connected to ThingsBoard MQTT
+2026-05-16 01:20:23,434 [INFO] [node7] published client attributes {'zone': 'Zone_2'}

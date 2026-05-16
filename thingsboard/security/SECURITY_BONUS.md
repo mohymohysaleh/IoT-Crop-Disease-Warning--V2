@@ -7,6 +7,6 @@ Completing every item earns the instructor rubric bonus (+1 course grade).
 3. **Customers & least privilege** — Create `Customer_Zone1` / `Customer_Zone2`; assign respective devices only. Demonstrate crossing customer boundaries fails to publish telemetry.
 4. **Audit logging** — Enable audit logs (`thingsboard.yml` / UI) and screenshot login + credential failures.
 5. **Device-profile alarm rules** (≥3 suggestions from brief) — e.g. inactive >30 min, telemetry frequency spike, plausible range violation on humidity/temperature.
-6. **Attack demo** — Run [`scripts/rogue_mqtt_client.py`](../scripts/rogue_mqtt_client.py); capture MQTT CONNACK + TB logs showing rejection.
+6. **Attack demo** — Run [`rogue_mqtt_client.py`](../scripts/rogue_mqtt_client.py); capture MQTT CONNACK + TB logs showing rejection.
 
 > Never submit production certificates, JWTs from live tenants, or actual SMTP passwords — use lab-only placeholders.

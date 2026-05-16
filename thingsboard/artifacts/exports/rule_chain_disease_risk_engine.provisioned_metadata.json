@@ -1,0 +1,11 @@
+{
+  "ruleChainId": {
+    "entityType": "RULE_CHAIN",
+    "id": "d6fe3cb0-50b3-11f1-a202-c1ba6c5deb08"
+  },
+  "version": 28,
+  "firstNodeIndex": null,
+  "nodes": [],
+  "connections": null,
+  "ruleChainConnections": null
+}

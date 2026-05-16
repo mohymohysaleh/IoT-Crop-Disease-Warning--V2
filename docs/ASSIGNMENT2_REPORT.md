@@ -179,6 +179,9 @@ Document your team-specific hurdles (port collisions, ChirpStack codec caching, 
 | Deliverable | Location / command |
 |-------------|---------------------|
 | Source zip | `python scripts/build_submission_zip.py` |
+| Readiness checks | `python scripts/verify_assignment_ready.py` (optional `--tb` `--docker`) |
+| Export TB JSON (dashboards + rule chains) | `python scripts/export_tb_artifacts.py` |
+| Report PDF (pandoc) | `python scripts/build_report_pdf.py` |
 | Demo video storyboard | [`docs/DEMO_VIDEO_SCRIPT.md`](DEMO_VIDEO_SCRIPT.md) |
 | README | [`README.md`](../README.md) |
 | Requirements | [`chirpstack/chirpstack-docker/requirements-assignment.txt`](../chirpstack/chirpstack-docker/requirements-assignment.txt) |

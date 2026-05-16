@@ -77,7 +77,7 @@ def main():
 
         proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file, cwd=script_dir)
         processes.append(("lorawan", proc, device["id"], log_file))
-        logging.info("  ✓ %s LoRa simulator started (PID %s)", device["id"], proc.pid)
+        logging.info("  [ok] %s LoRa simulator started (PID %s)", device["id"], proc.pid)
 
         tok = device.get("thingsboard_access_token", "")
         if tb_sidecars_enabled() and tb_token_ok(tok):
@@ -94,7 +94,7 @@ def main():
             ]
             tb_proc = subprocess.Popen(tb_cmd, stdout=tb_log, stderr=tb_log, cwd=script_dir)
             processes.append(("tb", tb_proc, device["id"] + "_tb", tb_log))
-            logging.info("  ✓ %s ThingsBoard OTA sidecar started (PID %s)", device["id"], tb_proc.pid)
+            logging.info("  [ok] %s ThingsBoard OTA sidecar started (PID %s)", device["id"], tb_proc.pid)
 
         elif zone == "zone2" and tb_sidecars_enabled() and not tb_token_ok(tok):
             logging.warning(

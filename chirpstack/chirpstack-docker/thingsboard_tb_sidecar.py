@@ -77,17 +77,25 @@ class OtaFsm(threading.Thread):
             self.sleep(0.4 if st != "UPDATED" else 0)
 
 def maybe_start_ota(client, merged: dict, state: dict, label: str):
-    shared = merged.get("shared") or {}
+    shared = merged.get("shared") if isinstance(merged.get("shared"), dict) else {}
     fv = shared.get("fw_version")
     ft = shared.get("fw_title")
+    # Some MQTT payloads (attribute responses) expose fw_* at the root or only under "shared".
+    if fv is None and ft is None:
+        fv = merged.get("fw_version")
+        ft = merged.get("fw_title")
     if fv is None and ft is None:
         return
     key = (str(ft), str(fv))
     if state.get("last_ota_pack") == key:
         return
     state["last_ota_pack"] = key
-    LOG.info("[%s] new OTA descriptors: %s", label, shared)
-    th = OtaFsm(client, {**merged, "shared": shared}, label)
+    merged_eff = dict(merged) if isinstance(merged, dict) else {}
+    if "shared" not in merged_eff or not isinstance(merged_eff.get("shared"), dict):
+        merged_eff["shared"] = {}
+    merged_eff["shared"] = {**merged_eff.get("shared", {}), "fw_version": fv, "fw_title": ft}
+    LOG.info("[%s] new OTA descriptors: %s", label, merged_eff.get("shared"))
+    th = OtaFsm(client, merged_eff, label)
     th.start()
 
 
@@ -107,9 +115,17 @@ def main():
             return
         LOG.info("[%s] connected to ThingsBoard MQTT", args.device_label)
         client.subscribe(attributes_topic_subscribe(), qos=1)
+        client.subscribe("v1/devices/me/attributes/response/+", qos=1)
         bootstrap = {"zone": args.zone_tag}
         client.publish(attributes_topic_publish(), json.dumps(bootstrap), qos=1)
         LOG.info("[%s] published client attributes %s", args.device_label, bootstrap)
+        req_id = int(time.time() * 1000) % 989000 + 10
+        req_topic = f"v1/devices/me/attributes/request/{req_id}"
+        req_body = json.dumps(
+            {"sharedKeys": "fw_title,fw_version,fw_tag,fw_checksum,fw_size,fw_url"}
+        )
+        client.publish(req_topic, req_body, qos=1)
+        LOG.info("[%s] requested shared attributes (%s)", args.device_label, req_topic)
 
     ota_seen = {}
 

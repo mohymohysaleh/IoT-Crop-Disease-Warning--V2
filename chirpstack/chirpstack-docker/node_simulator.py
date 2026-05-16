@@ -243,9 +243,9 @@ def make_mqtt_client(node_id: str):
     def on_connect(client, userdata, flags, rc, props=None):
         if rc == 0:
             connected[0] = True
-            log.info(f"[{node_id}] ✓ Connected to MQTT broker")
+            log.info("[%s] Connected to MQTT broker (ok)", node_id)
         else:
-            log.error(f"[{node_id}] ✗ MQTT connect failed rc={rc}")
+            log.error("[%s] MQTT connect failed rc=%s", node_id, rc)
 
     client = mqtt.Client(
         client_id=f"sim-{node_id}",
@@ -302,7 +302,7 @@ def run_simulator(node_id, zone, dev_eui, dev_addr,
             msg      = build_gateway_message(phy, gateway_eui, rng, step)
 
             result   = client.publish(topic, json.dumps(msg), qos=1)
-            status   = "✓" if result.rc == 0 else "✗"
+            status = "ok" if result.rc == 0 else "FAIL"
 
             log.info(
                 f"[{node_id}] #{step:04d} {current_mode:8s} | "

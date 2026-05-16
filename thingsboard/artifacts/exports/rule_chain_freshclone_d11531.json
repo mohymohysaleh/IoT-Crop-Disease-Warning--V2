@@ -1,0 +1,23 @@
+{
+  "id": {
+    "entityType": "RULE_CHAIN",
+    "id": "9e5e6990-50bb-11f1-a202-c1ba6c5deb08"
+  },
+  "createdTime": 1778890217129,
+  "tenantId": {
+    "entityType": "TENANT",
+    "id": "edea4420-5043-11f1-ae44-bd84dc73555c"
+  },
+  "name": "_FreshClone_d11531",
+  "type": "CORE",
+  "firstRuleNodeId": {
+    "entityType": "RULE_NODE",
+    "id": "1fd55a4a-d6d1-4fd1-b6fa-fb5bde8f2752"
+  },
+  "root": false,
+  "debugMode": false,
+  "externalId": null,
+  "version": 2,
+  "configuration": null,
+  "additionalInfo": {}
+}

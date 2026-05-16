@@ -4,8 +4,8 @@ ThingsBoard CE stores most configuration in the UI. After you complete setup, ex
 
 | Artifact | UI path |
 |-----------|---------|
-| **Disease Risk** rule chain JSON | Rule chains → Disease Risk Engine → ⋮ → Export |
-| **OTA / Rollback** auxiliary chain (optional) | Same |
+| **Disease Risk** rule chain (entity JSON + UI export) | Rule chains → Disease Risk Engine → ⋮ → Export |
+| **Disease Risk** nodes and connections (full graph) | Use `rule_chain_disease_risk_engine.provisioned_metadata.json` after `py -3 scripts/provision_tb_assignment.py` (CE often returns empty nodes from GET `/api/ruleChain/.../metadata`). || **OTA / Rollback** auxiliary chain (optional) | Same |
 | **Farmer dashboard** JSON | Dashboards → Farmer → ⋮ → Export |
 | **Zone1_Sensor** device profile | Device profiles → ⋮ → Export |
 | **Zone2_Sensor** device profile | Same |

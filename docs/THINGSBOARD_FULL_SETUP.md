@@ -188,20 +188,22 @@ You **do not** have to pre-create attributes on each device—the first telemetr
 ### 6b. Build the chain
 
 1. **Rule chains → Add rule chain**, name **`Disease Risk Engine`** (or similar).
-2. Wire nodes in order (**ROOT**):
+2. Wire the nodes (see **`thingsboard/rule_engine/RULE_CHAIN.md`** for the parallel branches). From the **Disease risk** transformation, connect **three** outputs: **Save timeseries**, the **POST_ATTRIBUTES** mini-transform → **Save attributes**, and the **Raise alarm?** script filter → **Create alarm**.
 
    | Order | Node | Notes |
    |-------|------|------|
-   | 1 | **Message type switch** or direct link from **Message received** | Filter on **Post telemetry** (or “Telemetry” path your TB build uses). |
-   | 2 | *(Optional)* **Script filter** | Drop garbage messages. |
-   | 3 | **Originator attributes** (**Get Attributes**) | Scope **Server**, keys **`riskEngineState`**. |
-   | 4 | **Transformation script** | Paste **`thingsboard/rule_engine/disease_risk_script.js`** (see RULE_CHAIN.md for field expectations). |
-   | 5 | **Save Attributes** | Server scope: save **`riskEngineState`** from script output (`msg`). |
-   | 6 | **Save telemetry** | Keys such as **`temperature`**, **`humidity`**, **`leaf_wetness`**, **`rainfall`**, **`risk_level`**, **`rain_sum_24h`** (whatever the script emits). |
-   | 7 | **Switch / Script filter** | e.g. `return msg.raiseFarmerAlarm === true;` |
-   | 8 | **Create alarm** and/or **To Email** | Alarm type e.g. “High crop risk”; email needs **Settings → Mail** (SMTP). |
+   | 1 | **Message type filter** | Only **Post telemetry**. |
+   | 2 | **Get Attributes** | Scope **Server**, keys **`riskEngineState`**. |
+   | 3 | **Transformation script** | Paste **`thingsboard/rule_engine/disease_risk_script.js`**. |
+   | 4 | **Save timeseries** | Persists env + **`risk_level`**, **`rain_sum_24h`**, etc. TB 4.2+: **TbMsgTimeseriesNode**. |
+   | 5 | **Transformation script** (short) | Emit **`POST_ATTRIBUTES_REQUEST`** with **`{ "riskEngineState": ... }`** only. |
+   | 6 | **Save attributes** | Server scope. TB 4.2+ CE: use the **save attributes** component implemented as **`TbMsgAttributesNode`** (do **not** pick a legacy **`TbSaveAttributesNode`** class — it may be absent in the Docker image). |
+   | 7 | **Script filter** | `return msg.raiseFarmerAlarm === true;` (branch still carries **Post telemetry**). |
+   | 8 | **Create alarm** | e.g. type **High crop risk**; email needs **Settings → Mail** if you add **Send email**. |
 
-3. Attach this chain so **incoming device telemetry** is processed (**Rule chain assignments** → devices or device profiles, or tenant default chain — depending on TB version UI).
+3. **Automated option:** **`py -3 scripts/provision_tb_assignment.py`** (reads **`TB_*`** from **`chirpstack/chirpstack-docker/.env`**). Prefer Compose image **`thingsboard/tb-postgres:4.2.1.1`**, not unversioned **`latest`**. It writes **`thingsboard/artifacts/exports/rule_chain_disease_risk_engine.import.json`** (**Rule chains → Import**), with **`…provisioned_metadata.json`** as a fallback. If the editor still shows only **Input**, import that file or finish wiring manually.
+
+4. Attach this chain on **Device profiles** **Zone1_Sensor** and **Zone2_Sensor** (default / telemetry rule chain).
 
 ### 6c. Export
 

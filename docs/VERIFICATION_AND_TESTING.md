@@ -124,6 +124,7 @@ For a **fresh** ChirpStack install created by the installer (not from this repo�
 
 - You have an **Application** and **10 devices** with DevEUIs / DevAddr / session keys aligned with **`config/devices.json`**.
 - Devices are **activated** (ABP) and use the correct **device profile** (with payload codec if you decode in ChirpStack).
+- **Frame counter vs `event/up`:** If uplinks are rejected or the frame counter resets (e.g. restarting `simulate_uplink.py` or nodes), ChirpStack may publish only `application/.../event/log` and **not** `event/up`. **`tb-chirpstack-bridge` listens only to `event/up`**, so ThingsBoard will not get LoRa telemetry until `event/up` is emitted again. For the lab, enable **Skip frame-counter validation** on the devices (fresh seeds from this repo set `skip_fcnt_check = true`; for an existing DB: `docker compose exec postgres psql -U chirpstack -d chirpstack -c "UPDATE device SET skip_fcnt_check = true;"`). Then confirm integration traffic: `docker compose logs chirpstack | findstr event/up` (Windows) or grep for `Publishing event` + `event/up`.
 
 ### “Everything disappeared” (empty devices / gateways)
 
@@ -164,7 +165,7 @@ cd D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker
 py -3 run_all_nodes.py
 ```
 
-**Expect:** `logs\node1.log` … `node10.log` with uplink lines and **✓** on publish.
+**Expect:** `logs\node1.log` … `node10.log` with uplink lines and **`ok`** publish status.
 
 **Optional:** `py -3 simulate_uplink.py` publishes the same style of **gateway `event/up`** frames for **all** devices in **`config/devices.json`** from a single process (ChirpStack v4’s REST API does **not** expose a device uplink simulator — any `…/simulate-uplink` URL returns **404**).
 

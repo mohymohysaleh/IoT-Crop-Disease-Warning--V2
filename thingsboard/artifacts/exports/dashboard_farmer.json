@@ -1,0 +1,735 @@
+{
+  "title": "Farmer Crop Risk",
+  "image": null,
+  "mobileHide": false,
+  "mobileOrder": null,
+  "configuration": {
+    "description": "",
+    "widgets": {
+      "a38b6171-0755-45ac-946d-8eb6b5dfadf9": {
+        "type": "latest",
+        "sizeX": 12,
+        "sizeY": 5,
+        "config": {
+          "timewindow": {
+            "displayValue": "",
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 1,
+              "interval": 1000,
+              "timewindowMs": 86400000,
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideQuickInterval": false
+            },
+            "history": {
+              "historyType": 0,
+              "interval": 1000,
+              "timewindowMs": 60000,
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideFixedInterval": false,
+              "hideQuickInterval": false
+            },
+            "aggregation": {
+              "type": "NONE",
+              "limit": 200
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "4px",
+          "settings": {
+            "enableSearch": true,
+            "displayPagination": true,
+            "defaultPageSize": 10,
+            "defaultSortOrder": "entityName",
+            "displayEntityName": true,
+            "displayEntityType": false,
+            "enableSelectColumnDisplay": false,
+            "entitiesTitle": "Risk \u2014 Zone 1",
+            "displayEntityLabel": false,
+            "entityNameColumnTitle": "Device"
+          },
+          "title": "Risk \u2014 Zone 1",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "960f2fdd-370a-4471-b2af-7b3bd6ee7c84",
+              "dataKeys": [
+                {
+                  "name": "risk_level",
+                  "type": "timeseries",
+                  "label": "risk_level",
+                  "color": "#f44336",
+                  "settings": {
+                    "columnWidth": "0px"
+                  },
+                  "_hash": 0.22
+                }
+              ]
+            }
+          ],
+          "useDashboardTimewindow": false,
+          "showLegend": false,
+          "showTitleIcon": false,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "padding": "5px 10px 5px 10px"
+          },
+          "actions": {}
+        },
+        "id": "a38b6171-0755-45ac-946d-8eb6b5dfadf9",
+        "typeFullFqn": "system.cards.entities_table"
+      },
+      "4b70654f-0abe-4182-bb30-47b3bc90e350": {
+        "type": "latest",
+        "sizeX": 12,
+        "sizeY": 5,
+        "config": {
+          "timewindow": {
+            "displayValue": "",
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 1,
+              "interval": 1000,
+              "timewindowMs": 86400000,
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideQuickInterval": false
+            },
+            "history": {
+              "historyType": 0,
+              "interval": 1000,
+              "timewindowMs": 60000,
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideFixedInterval": false,
+              "hideQuickInterval": false
+            },
+            "aggregation": {
+              "type": "NONE",
+              "limit": 200
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "4px",
+          "settings": {
+            "enableSearch": true,
+            "displayPagination": true,
+            "defaultPageSize": 10,
+            "defaultSortOrder": "entityName",
+            "displayEntityName": true,
+            "displayEntityType": false,
+            "enableSelectColumnDisplay": false,
+            "entitiesTitle": "Risk \u2014 Zone 2",
+            "displayEntityLabel": false,
+            "entityNameColumnTitle": "Device"
+          },
+          "title": "Risk \u2014 Zone 2",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "0e98be74-70c9-4852-a8b5-07f814abf152",
+              "dataKeys": [
+                {
+                  "name": "risk_level",
+                  "type": "timeseries",
+                  "label": "risk_level",
+                  "color": "#f44336",
+                  "settings": {
+                    "columnWidth": "0px"
+                  },
+                  "_hash": 0.22
+                }
+              ]
+            }
+          ],
+          "useDashboardTimewindow": false,
+          "showLegend": false,
+          "showTitleIcon": false,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "padding": "5px 10px 5px 10px"
+          },
+          "actions": {}
+        },
+        "id": "4b70654f-0abe-4182-bb30-47b3bc90e350",
+        "typeFullFqn": "system.cards.entities_table"
+      },
+      "282576e7-c82a-4836-9621-66cec9e02d31": {
+        "type": "timeseries",
+        "sizeX": 24,
+        "sizeY": 6,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "",
+              "entityAliasId": "18be9afe-9fbe-41c1-ae44-503243a08eca",
+              "dataKeys": [
+                {
+                  "name": "temperature",
+                  "type": "timeseries",
+                  "label": "Temperature",
+                  "color": "#E53935",
+                  "settings": {
+                    "yAxisId": "default",
+                    "showInLegend": true,
+                    "dataHiddenByDefault": false,
+                    "type": "line",
+                    "lineSettings": {
+                      "showLine": true,
+                      "smooth": false,
+                      "lineWidth": 2,
+                      "showPoints": false
+                    }
+                  },
+                  "_hash": 0.31,
+                  "units": "\u00b0C",
+                  "decimals": 1,
+                  "aggregationType": null,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                },
+                {
+                  "name": "humidity",
+                  "type": "timeseries",
+                  "label": "Humidity",
+                  "color": "#1E88E5",
+                  "settings": {
+                    "yAxisId": "default",
+                    "showInLegend": true,
+                    "dataHiddenByDefault": false,
+                    "type": "line",
+                    "lineSettings": {
+                      "showLine": true,
+                      "smooth": false,
+                      "lineWidth": 2,
+                      "showPoints": false
+                    }
+                  },
+                  "_hash": 0.32,
+                  "units": "%",
+                  "decimals": 0,
+                  "aggregationType": null,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 0,
+              "timewindowMs": 172800000,
+              "interval": 5000
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 25000
+            }
+          },
+          "showTitle": true,
+          "title": "Temperature & humidity",
+          "settings": {
+            "stack": false,
+            "showLegend": true,
+            "legendConfig": {
+              "direction": "column",
+              "position": "bottom",
+              "sortDataKeys": false,
+              "showMin": true,
+              "showMax": true,
+              "showAvg": true,
+              "showTotal": false,
+              "showLatest": false
+            },
+            "thresholds": [],
+            "dataZoom": true,
+            "showTooltip": true,
+            "tooltipTrigger": "axis",
+            "padding": "12px",
+            "xAxis": {
+              "show": true,
+              "position": "bottom",
+              "showTickLabels": true,
+              "showLine": true,
+              "ticksFormat": {}
+            },
+            "yAxes": {
+              "default": {
+                "id": "default",
+                "order": 0,
+                "show": true,
+                "position": "left",
+                "showTickLabels": true,
+                "showTicks": true,
+                "showLine": true,
+                "showSplitLines": true,
+                "splitLinesColor": "rgba(0, 0, 0, 0.12)",
+                "ticksColor": "rgba(0, 0, 0, 0.54)",
+                "lineColor": "rgba(0, 0, 0, 0.54)",
+                "tickLabelColor": "rgba(0, 0, 0, 0.54)",
+                "labelColor": "rgba(0, 0, 0, 0.54)"
+              }
+            },
+            "noAggregationBarWidthSettings": {
+              "strategy": "group",
+              "groupWidth": {
+                "relative": true,
+                "relativeWidth": 2,
+                "absoluteWidth": 1000
+              },
+              "barWidth": {
+                "relative": true,
+                "relativeWidth": 2,
+                "absoluteWidth": 1000
+              }
+            },
+            "animation": {
+              "animation": true,
+              "animationThreshold": 2000,
+              "animationDuration": 500,
+              "animationEasing": "cubicOut",
+              "animationDelay": 0,
+              "animationDurationUpdate": 300,
+              "animationEasingUpdate": "cubicOut",
+              "animationDelayUpdate": 0
+            },
+            "background": {
+              "type": "color",
+              "color": "#fff",
+              "overlay": {
+                "enabled": false,
+                "color": "rgba(255,255,255,0.72)",
+                "blur": 3
+              }
+            }
+          },
+          "useDashboardTimewindow": false,
+          "showLegend": true,
+          "displayTimewindow": true
+        },
+        "id": "282576e7-c82a-4836-9621-66cec9e02d31",
+        "typeFullFqn": "system.time_series_chart"
+      },
+      "b45ab37b-d64c-4e83-9200-fd0c8e06794b": {
+        "type": "timeseries",
+        "sizeX": 24,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "",
+              "entityAliasId": "18be9afe-9fbe-41c1-ae44-503243a08eca",
+              "dataKeys": [
+                {
+                  "name": "rainfall",
+                  "type": "timeseries",
+                  "label": "rainfall",
+                  "color": "#43A047",
+                  "settings": {
+                    "yAxisId": "default",
+                    "showInLegend": true,
+                    "dataHiddenByDefault": false,
+                    "type": "bar",
+                    "lineSettings": {
+                      "showLine": false,
+                      "smooth": false,
+                      "lineWidth": 2,
+                      "showPoints": false
+                    },
+                    "barSettings": {
+                      "showBorder": false,
+                      "borderWidth": 2
+                    }
+                  },
+                  "_hash": 0.41,
+                  "aggregationType": null,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 0,
+              "timewindowMs": 172800000,
+              "interval": 5000
+            },
+            "aggregation": {
+              "type": "MAX",
+              "limit": 5000
+            }
+          },
+          "showTitle": true,
+          "title": "Rainfall bursts",
+          "settings": {
+            "stack": false,
+            "showLegend": true,
+            "legendConfig": {
+              "direction": "column",
+              "position": "bottom",
+              "sortDataKeys": false,
+              "showMin": true,
+              "showMax": true,
+              "showAvg": true,
+              "showTotal": false,
+              "showLatest": false
+            },
+            "thresholds": [],
+            "dataZoom": true,
+            "showTooltip": true,
+            "tooltipTrigger": "axis",
+            "padding": "12px",
+            "xAxis": {
+              "show": true,
+              "position": "bottom",
+              "showTickLabels": true,
+              "showLine": true,
+              "ticksFormat": {}
+            },
+            "yAxes": {
+              "default": {
+                "id": "default",
+                "order": 0,
+                "show": true,
+                "position": "left",
+                "showTickLabels": true,
+                "showTicks": true,
+                "showLine": true,
+                "showSplitLines": true,
+                "splitLinesColor": "rgba(0, 0, 0, 0.12)",
+                "ticksColor": "rgba(0, 0, 0, 0.54)",
+                "lineColor": "rgba(0, 0, 0, 0.54)",
+                "tickLabelColor": "rgba(0, 0, 0, 0.54)",
+                "labelColor": "rgba(0, 0, 0, 0.54)"
+              }
+            },
+            "noAggregationBarWidthSettings": {
+              "strategy": "group",
+              "groupWidth": {
+                "relative": true,
+                "relativeWidth": 2,
+                "absoluteWidth": 1000
+              },
+              "barWidth": {
+                "relative": true,
+                "relativeWidth": 2,
+                "absoluteWidth": 1000
+              }
+            },
+            "animation": {
+              "animation": true,
+              "animationThreshold": 2000,
+              "animationDuration": 500,
+              "animationEasing": "cubicOut",
+              "animationDelay": 0,
+              "animationDurationUpdate": 300,
+              "animationEasingUpdate": "cubicOut",
+              "animationDelayUpdate": 0
+            },
+            "background": {
+              "type": "color",
+              "color": "#fff",
+              "overlay": {
+                "enabled": false,
+                "color": "rgba(255,255,255,0.72)",
+                "blur": 3
+              }
+            }
+          },
+          "useDashboardTimewindow": false,
+          "showLegend": true,
+          "displayTimewindow": true
+        },
+        "id": "b45ab37b-d64c-4e83-9200-fd0c8e06794b",
+        "typeFullFqn": "system.time_series_chart"
+      },
+      "766fee4c-3170-4f00-b597-af1d75b714e6": {
+        "type": "alarm",
+        "sizeX": 24,
+        "sizeY": 6,
+        "config": {
+          "timewindow": {
+            "realtime": {
+              "interval": 1000,
+              "timewindowMs": 86400000
+            }
+          },
+          "showTitle": true,
+          "title": "Alert history",
+          "settings": {
+            "enableSearch": true,
+            "displayPagination": true,
+            "defaultPageSize": 10,
+            "enableFilter": true
+          },
+          "alarmSource": {
+            "type": "entity",
+            "name": "alarms",
+            "entityAliasId": "18be9afe-9fbe-41c1-ae44-503243a08eca",
+            "dataKeys": [
+              {
+                "name": "createdTime",
+                "type": "alarm",
+                "label": "Created",
+                "color": "#2196f3",
+                "settings": {},
+                "_hash": 0.51
+              },
+              {
+                "name": "type",
+                "type": "alarm",
+                "label": "Type",
+                "color": "#f44336",
+                "settings": {},
+                "_hash": 0.52
+              },
+              {
+                "name": "severity",
+                "type": "alarm",
+                "label": "Severity",
+                "color": "#ffc107",
+                "settings": {},
+                "_hash": 0.53
+              }
+            ]
+          },
+          "alarmFilterConfig": {
+            "statusList": [],
+            "severityList": [],
+            "typeList": [
+              "High crop risk"
+            ],
+            "searchPropagatedAlarms": true
+          },
+          "datasources": [],
+          "useDashboardTimewindow": false,
+          "showLegend": false,
+          "displayTimewindow": true
+        },
+        "id": "766fee4c-3170-4f00-b597-af1d75b714e6",
+        "typeFullFqn": "system.alarm_widgets.alarms_table"
+      }
+    },
+    "layouts": {
+      "main": {
+        "widgets": {
+          "a38b6171-0755-45ac-946d-8eb6b5dfadf9": {
+            "col": 0,
+            "row": 0,
+            "sizeX": 12,
+            "sizeY": 5,
+            "resizable": true
+          },
+          "4b70654f-0abe-4182-bb30-47b3bc90e350": {
+            "col": 12,
+            "row": 0,
+            "sizeX": 12,
+            "sizeY": 5,
+            "resizable": true
+          },
+          "282576e7-c82a-4836-9621-66cec9e02d31": {
+            "col": 0,
+            "row": 5,
+            "sizeX": 24,
+            "sizeY": 6,
+            "resizable": true
+          },
+          "b45ab37b-d64c-4e83-9200-fd0c8e06794b": {
+            "col": 0,
+            "row": 11,
+            "sizeX": 24,
+            "sizeY": 5,
+            "resizable": true
+          },
+          "766fee4c-3170-4f00-b597-af1d75b714e6": {
+            "col": 0,
+            "row": 16,
+            "sizeX": 24,
+            "sizeY": 6,
+            "resizable": true
+          }
+        },
+        "gridSettings": {
+          "layoutType": "default",
+          "columns": 24,
+          "margin": 10,
+          "outerMargin": true,
+          "backgroundColor": "#eeeeee",
+          "color": "rgba(0,0,0,0.87)",
+          "backgroundSizeMode": "100%",
+          "autoFillHeight": true,
+          "mobileAutoFillHeight": false,
+          "mobileRowHeight": 70
+        }
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Farmer Crop Risk",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "a38b6171-0755-45ac-946d-8eb6b5dfadf9": {
+                "col": 0,
+                "row": 0,
+                "sizeX": 12,
+                "sizeY": 5,
+                "resizable": true
+              },
+              "4b70654f-0abe-4182-bb30-47b3bc90e350": {
+                "col": 12,
+                "row": 0,
+                "sizeX": 12,
+                "sizeY": 5,
+                "resizable": true
+              },
+              "282576e7-c82a-4836-9621-66cec9e02d31": {
+                "col": 0,
+                "row": 5,
+                "sizeX": 24,
+                "sizeY": 6,
+                "resizable": true
+              },
+              "b45ab37b-d64c-4e83-9200-fd0c8e06794b": {
+                "col": 0,
+                "row": 11,
+                "sizeX": 24,
+                "sizeY": 5,
+                "resizable": true
+              },
+              "766fee4c-3170-4f00-b597-af1d75b714e6": {
+                "col": 0,
+                "row": 16,
+                "sizeX": 24,
+                "sizeY": 6,
+                "resizable": true
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "columns": 24,
+              "margin": 10,
+              "outerMargin": true,
+              "backgroundColor": "#eeeeee",
+              "color": "rgba(0,0,0,0.87)",
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": true,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {
+      "960f2fdd-370a-4471-b2af-7b3bd6ee7c84": {
+        "id": "960f2fdd-370a-4471-b2af-7b3bd6ee7c84",
+        "alias": "zone1_devices",
+        "filter": {
+          "type": "deviceType",
+          "resolveMultiple": true,
+          "deviceNameFilter": "",
+          "deviceTypes": [
+            "Zone1_Sensor"
+          ]
+        }
+      },
+      "0e98be74-70c9-4852-a8b5-07f814abf152": {
+        "id": "0e98be74-70c9-4852-a8b5-07f814abf152",
+        "alias": "zone2_devices",
+        "filter": {
+          "type": "deviceType",
+          "resolveMultiple": true,
+          "deviceNameFilter": "",
+          "deviceTypes": [
+            "Zone2_Sensor"
+          ]
+        }
+      },
+      "18be9afe-9fbe-41c1-ae44-503243a08eca": {
+        "id": "18be9afe-9fbe-41c1-ae44-503243a08eca",
+        "alias": "all_field_devices",
+        "filter": {
+          "type": "deviceType",
+          "resolveMultiple": true,
+          "deviceNameFilter": "",
+          "deviceTypes": [
+            "Zone1_Sensor",
+            "Zone2_Sensor"
+          ]
+        }
+      }
+    },
+    "filters": {},
+    "settings": {
+      "stateControllerId": "default",
+      "showTitle": false,
+      "showEntitiesSelect": true,
+      "showDashboardTimewindow": true,
+      "showDashboardExport": true,
+      "toolbarAlwaysOpen": true
+    },
+    "timewindow": {
+      "hideAggregation": false,
+      "hideAggInterval": false,
+      "hideTimezone": false,
+      "selectedTab": 0,
+      "realtime": {
+        "realtimeType": 0,
+        "interval": 1000,
+        "timewindowMs": 172800000
+      },
+      "aggregation": {
+        "type": "NONE",
+        "limit": 25000
+      }
+    }
+  },
+  "name": "Farmer Crop Risk",
+  "resources": null,
+  "id": {
+    "entityType": "DASHBOARD",
+    "id": "5edb42d0-50b0-11f1-a202-c1ba6c5deb08"
+  },
+  "createdTime": 1778885386109,
+  "tenantId": {
+    "entityType": "TENANT",
+    "id": "edea4420-5043-11f1-ae44-bd84dc73555c"
+  },
+  "assignedCustomers": null,
+  "version": 16,
+  "externalId": null
+}

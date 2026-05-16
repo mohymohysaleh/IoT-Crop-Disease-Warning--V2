@@ -1,0 +1,38 @@
+{
+  "ruleChain": {
+    "id": {
+      "entityType": "RULE_CHAIN",
+      "id": "d6fe3cb0-50b3-11f1-a202-c1ba6c5deb08"
+    },
+    "createdTime": 1778886876155,
+    "tenantId": {
+      "entityType": "TENANT",
+      "id": "edea4420-5043-11f1-ae44-bd84dc73555c"
+    },
+    "name": "Disease Risk Engine",
+    "type": "CORE",
+    "firstRuleNodeId": {
+      "entityType": "RULE_NODE",
+      "id": "ae036cec-f758-44ec-b4e1-a881c6585da4"
+    },
+    "root": false,
+    "debugMode": false,
+    "externalId": null,
+    "version": 28,
+    "configuration": null,
+    "additionalInfo": {
+      "description": "Assignment 2 disease risk (provision_tb_assignment.py)"
+    }
+  },
+  "metadata": {
+    "ruleChainId": {
+      "entityType": "RULE_CHAIN",
+      "id": "d6fe3cb0-50b3-11f1-a202-c1ba6c5deb08"
+    },
+    "version": 28,
+    "firstNodeIndex": null,
+    "nodes": [],
+    "connections": null,
+    "ruleChainConnections": null
+  }
+}

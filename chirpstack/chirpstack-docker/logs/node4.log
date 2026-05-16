@@ -1,67 +1,21 @@
-2026-05-15 19:50:59,177 [INFO] Starting node4 | zone=zone1 | devAddr=00000004 | mode=BUILDUP | seed=453
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 39: character maps to <undefined>
-Call stack:
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1012, in _bootstrap
-    self._bootstrap_inner()
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1041, in _bootstrap_inner
-    self.run()
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 992, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 4523, in _thread_main
-    self.loop_forever(retry_first_connection=True)
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 2297, in loop_forever
-    rc = self._loop(timeout)
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 1686, in _loop
-    rc = self.loop_read()
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 2100, in loop_read
-    rc = self._packet_read()
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3142, in _packet_read
-    rc = self._packet_handle()
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3814, in _packet_handle
-    return self._handle_connack()
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\site-packages\paho\mqtt\client.py", line 3934, in _handle_connack
-    on_connect(
-  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 246, in on_connect
-    log.info(f"[{node_id}] \u2713 Connected to MQTT broker")
-Message: '[node4] \u2713 Connected to MQTT broker'
-Arguments: ()
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 111: character maps to <undefined>
-Call stack:
-  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
-    run_simulator(
-  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
-    log.info(
-Message: '[node4] #0000 BUILDUP  | T= 13.1°C H= 65.3% LW= 0.1h R= 1.8mm | risk=LOW      | \u2713'
-Arguments: ()
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1153, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ahmed\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 111: character maps to <undefined>
-Call stack:
-  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 345, in <module>
-    run_simulator(
-  File "D:\down\IoT-Crop-Disease-Warning--V2\chirpstack\chirpstack-docker\node_simulator.py", line 307, in run_simulator
-    log.info(
-Message: '[node4] #0001 BUILDUP  | T= 14.2°C H= 64.6% LW= 0.5h R= 0.9mm | risk=LOW      | \u2713'
-Arguments: ()
+2026-05-16 01:19:19,308 [INFO] Starting node4 | zone=zone1 | devAddr=00000004 | mode=BUILDUP | seed=453
+2026-05-16 01:19:19,337 [INFO] [node4] Connected to MQTT broker (ok)
+2026-05-16 01:19:20,409 [INFO] [node4] #0000 BUILDUP  | T= 13.1°C H= 65.3% LW= 0.1h R= 1.8mm | risk=LOW      | ok
+2026-05-16 01:24:20,411 [INFO] [node4] #0001 BUILDUP  | T= 14.2°C H= 64.6% LW= 0.5h R= 0.9mm | risk=LOW      | ok
+2026-05-16 01:29:20,412 [INFO] [node4] #0002 BUILDUP  | T= 14.9°C H= 66.3% LW= 0.3h R= 1.7mm | risk=LOW      | ok
+2026-05-16 01:34:20,413 [INFO] [node4] #0003 BUILDUP  | T= 14.5°C H= 66.4% LW= 0.6h R= 1.2mm | risk=LOW      | ok
+2026-05-16 01:39:20,415 [INFO] [node4] #0004 BUILDUP  | T= 13.1°C H= 66.5% LW= 0.6h R= 0.8mm | risk=LOW      | ok
+2026-05-16 01:44:20,417 [INFO] [node4] #0005 BUILDUP  | T= 13.3°C H= 67.4% LW= 1.0h R= 1.9mm | risk=LOW      | ok
+2026-05-16 01:49:20,418 [INFO] [node4] #0006 BUILDUP  | T= 14.8°C H= 67.4% LW= 1.4h R= 1.4mm | risk=LOW      | ok
+2026-05-16 01:54:20,420 [INFO] [node4] #0007 BUILDUP  | T= 13.3°C H= 69.1% LW= 1.5h R= 0.3mm | risk=LOW      | ok
+2026-05-16 01:59:20,423 [INFO] [node4] #0008 BUILDUP  | T= 13.5°C H= 69.5% LW= 1.4h R= 0.2mm | risk=LOW      | ok
+2026-05-16 02:04:20,424 [INFO] [node4] #0009 BUILDUP  | T= 14.3°C H= 68.3% LW= 1.8h R= 0.1mm | risk=LOW      | ok
+2026-05-16 02:09:20,426 [INFO] [node4] #0010 BUILDUP  | T= 13.8°C H= 69.0% LW= 1.8h R= 0.3mm | risk=LOW      | ok
+2026-05-16 02:14:20,429 [INFO] [node4] #0011 BUILDUP  | T= 14.9°C H= 69.8% LW= 2.0h R= 0.6mm | risk=LOW      | ok
+2026-05-16 02:19:20,431 [INFO] [node4] #0012 BUILDUP  | T= 14.4°C H= 69.7% LW= 2.0h R= 1.1mm | risk=LOW      | ok
+2026-05-16 02:24:20,433 [INFO] [node4] #0013 BUILDUP  | T= 14.2°C H= 70.5% LW= 2.3h R= 0.0mm | risk=LOW      | ok
+2026-05-16 02:29:20,435 [INFO] [node4] #0014 BUILDUP  | T= 14.6°C H= 70.8% LW= 2.5h R= 1.9mm | risk=LOW      | ok
+2026-05-16 02:34:20,439 [INFO] [node4] #0015 BUILDUP  | T= 14.1°C H= 70.9% LW= 2.7h R= 1.5mm | risk=LOW      | ok
+2026-05-16 02:39:20,443 [INFO] [node4] #0016 BUILDUP  | T= 13.9°C H= 71.5% LW= 2.8h R= 1.3mm | risk=LOW      | ok
+2026-05-16 02:44:20,445 [INFO] [node4] #0017 BUILDUP  | T= 13.9°C H= 72.3% LW= 2.8h R= 1.4mm | risk=LOW      | ok
+2026-05-16 02:49:20,447 [INFO] [node4] #0018 BUILDUP  | T= 14.2°C H= 72.3% LW= 3.2h R= 0.9mm | risk=LOW      | ok

@@ -1,0 +1,25 @@
+{
+  "id": {
+    "entityType": "RULE_CHAIN",
+    "id": "eebd99b0-5043-11f1-ae44-bd84dc73555c"
+  },
+  "createdTime": 1778838812363,
+  "tenantId": {
+    "entityType": "TENANT",
+    "id": "edea4420-5043-11f1-ae44-bd84dc73555c"
+  },
+  "name": "Thermostat",
+  "type": "CORE",
+  "firstRuleNodeId": {
+    "entityType": "RULE_NODE",
+    "id": "eec058d1-5043-11f1-ae44-bd84dc73555c"
+  },
+  "root": false,
+  "debugMode": false,
+  "externalId": null,
+  "version": 2,
+  "configuration": null,
+  "additionalInfo": {
+    "description": ""
+  }
+}
